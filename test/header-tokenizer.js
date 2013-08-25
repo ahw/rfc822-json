@@ -85,14 +85,14 @@ module.exports = {
 
     'Collapses complex internal whitespace (CR, LF chars)': function(test) {
         var fieldName = 'Content-Type';
-        var fieldBody = 'one\rtwo\nthree\r four\n five\r\tsix\n\tseven\r\reight\n\nnine';
+        var fieldBody = 'one\rtwo\nthree\r four\n five\r\tsix\n\tseven\r\reight\n\nnine\r\n\rten\r\n\r eleven';
 
         var wrapper = {tokenHandler: function() {} };
         var spy = Sinon.spy(wrapper, 'tokenHandler');
 
         this.tokenizer.on('token', spy);
         this.tokenizer.on('done', function() {
-            test.ok(spy.secondCall.calledWith({type: 'field_body', value: 'one two three four five six seven eight nine'}));
+            test.ok(spy.secondCall.calledWith({type: 'field_body', value: 'one two three four five six seven eight nine ten eleven'}));
             test.equal(spy.callCount, 2);
             test.done();
         });
@@ -105,12 +105,45 @@ module.exports = {
         var fieldName = 'Content-Type';
         var fieldBody = '    foo     ';
 
-        var wrapper = {tokenHandler: console.log };
+        var wrapper = {tokenHandler: function() {} };
         var spy = Sinon.spy(wrapper, 'tokenHandler');
 
         this.tokenizer.on('token', spy);
         this.tokenizer.on('done', function() {
             test.ok(spy.secondCall.calledWith({type: 'field_body', value: 'foo'}));
+            test.done();
+        });
+
+        this.tokenizer.write(fieldName + ':' + fieldBody);
+        this.tokenizer.end('\r\n\r\n');
+    },
+
+    'Emits error for invalid field name': function(test) {
+        var fieldName = 'Content Type';
+
+        var wrapper = {tokenHandler: function() {} };
+        var spy = Sinon.spy(wrapper, 'tokenHandler');
+
+        this.tokenizer.on('token', spy);
+
+        this.tokenizer.on('error', function() {
+            test.done();
+        });
+
+        this.tokenizer.write(fieldName + ':foo');
+        this.tokenizer.end('\r\n\r\n');
+    },
+
+    'Emits error for invalid field body chars': function(test) {
+        var fieldName = 'Content-Type';
+        var fieldBody = String.fromCharCode(127); // DEL control character
+
+        var wrapper = {tokenHandler: function() {} };
+        var spy = Sinon.spy(wrapper, 'tokenHandler');
+
+        this.tokenizer.on('token', spy);
+
+        this.tokenizer.on('error', function() {
             test.done();
         });
 
