@@ -51,7 +51,6 @@ module.exports = {
         this.parser.on('headers', function(headers) {
             Assert.equal(headers['Received'].length, 3);
             Assert.equal(typeof headers['Received'], 'object');
-            console.dir(headers);
             test.done();
         });
     }
