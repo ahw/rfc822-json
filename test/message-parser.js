@@ -7,7 +7,7 @@ var Assert = require('assert');
 module.exports = {
     setUp: function(callback) {
         this.parser = new MessageParser();
-        this.messageStream = FileSystem.createReadStream(__dirname + '/email1.txt');
+        this.messageStream = FileSystem.createReadStream(__dirname + '/test-email.txt');
         callback();
     },
 
@@ -47,7 +47,6 @@ module.exports = {
         this.parser.end('This is the body');
 
         this.parser.on('message', function(message) {
-            console.dir(message);
             Assert.ok(message.headers, 'Message has no parsed headers');
             Assert.ok(message.body, 'Message has no parsed body');
             test.done();
