@@ -1,0 +1,22 @@
+{
+  "name": "rfc822-json",
+  "version": "0.1.0",
+  "author": "Andy Hallagan",
+  "maintainers": [
+    {
+      "name": "ahw",
+      "email": "andrewhallagan@gmail.com"
+    }
+  ],
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ahw/rfc822-json"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "sinon": "~1.7.3"
+  }
+}
