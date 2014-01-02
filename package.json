@@ -18,5 +18,6 @@
   "license": "MIT",
   "dependencies": {
     "sinon": "~1.7.3"
-  }
+  },
+  "main": "lib/message-parser.js"
 }
