@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/ahw/rfc822-json"
+    "url": "https://github.com/ahw/rfc822-json"
   },
   "license": "MIT",
   "dependencies": {
