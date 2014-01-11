@@ -1,6 +1,6 @@
 {
   "name": "rfc822-json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Parses an RFC-822 message stream (standard email) into JSON and returns a readable stream.",
   "keywords": "email json rfc 822 message stream",
   "author": "Andy Hallagan <andrewhallagan@gmail.com>",
