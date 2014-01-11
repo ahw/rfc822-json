@@ -40,11 +40,12 @@ module.exports = {
     },
 
     'Re-fires message event if handler attached too late': function(test) {
+
         this.parser.write('Content-Type: text/plain\r\n');
         this.parser.write('Content-Length: 123\r\n');
         this.parser.write('\r\n');
         this.parser.write('\r\n');
-        this.parser.end('This is the body');
+        this.parser.end('this is the body');
 
         this.parser.on('message', function(message) {
             Assert.ok(message.headers, 'Message has no parsed headers');
