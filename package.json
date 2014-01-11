@@ -1,13 +1,9 @@
 {
   "name": "rfc822-json",
   "version": "0.1.0",
-  "author": "Andy Hallagan",
-  "maintainers": [
-    {
-      "name": "ahw",
-      "email": "andrewhallagan@gmail.com"
-    }
-  ],
+  "description": "Parses an RFC-822 message stream (standard email) into JSON and returns a readable stream.",
+  "keywords": "email json rfc 822 message stream",
+  "author": "Andy Hallagan <andrewhallagan@gmail.com>",
   "scripts": {
     "test": "nodeunit test"
   },
@@ -16,7 +12,7 @@
     "url": "https://github.com/ahw/rfc822-json"
   },
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "sinon": "~1.7.3"
   },
   "main": "lib/message-parser.js"
