@@ -10,7 +10,7 @@
     "message",
     "stream"
   ],
-  "author": "Andy Hallagan <andrewhallagan@gmail.com>",
+  "author": "Andrew Hallagan <andrewhallagan@gmail.com>",
   "scripts": {
     "test": "nodeunit test"
   },
